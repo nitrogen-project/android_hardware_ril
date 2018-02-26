@@ -3245,6 +3245,9 @@ int radio::getCurrentCallsResponse(int slotId,
                 calls[i].namePresentation = (CallPresentation) p_cur->namePresentation;
                 if (p_cur->uusInfo != NULL && p_cur->uusInfo->uusData != NULL) {
                     RIL_UUS_Info *uusInfo = p_cur->uusInfo;
+#ifdef RESIZE_UUS
+                    calls[i].uusInfo.resize(1);
+#endif
                     calls[i].uusInfo[0].uusType = (UusType) uusInfo->uusType;
                     calls[i].uusInfo[0].uusDcs = (UusDcs) uusInfo->uusDcs;
                     // convert uusInfo->uusData to a null-terminated string
